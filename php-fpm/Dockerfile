@@ -61,7 +61,6 @@ RUN set -xe; \
       # Install the zip extension
       docker-php-ext-install zip && \
       php -m | grep -q 'zip'
-
 #
 #--------------------------------------------------------------------------
 # Optional Software's Installation
@@ -235,7 +234,6 @@ RUN if [ $(php -r "echo PHP_MAJOR_VERSION;") = "8" ]; then \
   sed -i "s/xdebug.remote_autostart=0/xdebug.start_with_request=yes/" /usr/local/etc/php/conf.d/xdebug.ini && \
   sed -i "s/xdebug.remote_enable=0/xdebug.mode=debug/" /usr/local/etc/php/conf.d/xdebug.ini \
 ;else \
-  sed -i "s/xdebug.remote_autostart=0/xdebug.remote_autostart=1/" /usr/local/etc/php/conf.d/xdebug.ini && \
   sed -i "s/xdebug.remote_enable=0/xdebug.remote_enable=1/" /usr/local/etc/php/conf.d/xdebug.ini \
 ;fi
 RUN sed -i "s/xdebug.cli_color=0/xdebug.cli_color=1/" /usr/local/etc/php/conf.d/xdebug.ini
